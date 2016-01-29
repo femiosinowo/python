@@ -45,4 +45,4 @@ def send_mail(send_from, send_to, subject, text, files=[], server="localhost"):
     smtp.sendmail(send_from, send_to, msg.as_string())
     smtp.close()
 
-send_mail('root@example.com', ['personal@mail.com'], 'Daily Server Report', 'Your Daily Server Report:', ['/path/to/message.txt'])
+send_mail('root@example.com', ['personal@mail.com'], 'Daily Server Report', 'Your Daily Server Report:', ['message.txt'])
