@@ -1,21 +1,14 @@
 ﻿#!/usr/bin/env python
-
-import subprocess
-
-
-#function to print my filesystem
-def myFileSystem():
-        print "this is going to print the filesystem:\n"
-        subprocess.call('df -h' , shell=True)
-        print "/n"
-        subprocess.
-#print time
-def myTime():
-        subprocess.call('date', shell=True)
-
-def main():
-        myFileSystem()
-        myTime()
-
-
-main()
+import paramiko
+hostname = '10.0.0.60'
+port = 22
+username = 'jmjones'
+password = 'xxxYYYxxx'
+if __name__ == "__main__":
+    paramiko.util.log_to_file('paramiko.log')
+    s = paramiko.SSHClient()
+    s.load_system_host_keys()
+    s.connect(hostname, port, username, password)
+    stdin, stdout, stderr = s.exec_command('ifconfig')
+    print stdout.read()
+    s.close()
